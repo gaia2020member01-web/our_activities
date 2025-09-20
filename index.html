@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAIA - 愛知 生物多様性 学生プロジェクト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', 'Noto Sans JP', sans-serif; background-color: #F8F9FA; }
+        .gradient-text { background: linear-gradient(45deg, #10B981, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-link { @apply text-gray-600 hover:text-emerald-500 transition-colors duration-300; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- ナビゲーションバー -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-4 flex justify-between items-center py-4">
+            <a href="#" class="text-2xl font-bold gradient-text">GAIA</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#history" class="nav-link">Our History</a>
+                <a href="#activities" class="nav-link">Activities</a>
+                <a href="#join" class="nav-link">Join Us</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <!-- モバイルメニュー -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+            <a href="#about" class="block py-2 nav-link">About Us</a>
+            <a href="#history" class="block py-2 nav-link">Our History</a>
+            <a href="#activities" class="block py-2 nav-link">Activities</a>
+            <a href="#join" class="block py-2 nav-link">Join Us</a>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <div class="container mx-auto px-4 py-16 md:py-24 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold gradient-text">Getting Action Into Action</h1>
+        <p class="mt-4 text-lg md:text-xl text-gray-600">愛知発、生物多様性保全を推進する学生プロジェクト</p>
+        <p class="mt-2 text-gray-500 max-w-2xl mx-auto">大学生の君へ。僕たちの「楽しさ」「学び」「仲間」が詰まった活動を、一緒に覗いてみない？</p>
+    </div>
+
+    <div class="container mx-auto px-4 pb-16">
+
+        <!-- GAIAについて セクション -->
+        <section id="about" class="mb-20 md:mb-32 scroll-mt-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="bg-white rounded-xl shadow-lg p-8 md:p-10">
+                    <h2 class="text-3xl font-bold mb-6 text-gray-800">What is "GAIA"?</h2>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        私たちが暮らす愛知県には素晴らしい取り組みがたくさんあります。生物多様性あいち学生プロジェクトからはじまり、継続して活動してきました。生物多様性保全を、私たち若者が推進するには何ができるだろうか。これをテーマに、学び、体験、ディスカッションを続けてきました。
+                    </p>
+                    <p class="text-gray-600 leading-relaxed font-semibold text-emerald-600">
+                        たどり着いたキーワードは、「守り、つなぎ、広める」こと。
+                    </p>
+                    <p class="mt-4 text-gray-600 leading-relaxed">
+                        ２０２０年の結成から、県内の様々な大学生・ユースが生物多様性保全活動のバトンをつないできました。
+                    </p>
+                    <p class="mt-6 text-sm text-gray-500">
+                        <span class="font-bold">GAIA</span> = Getting Action Into Action (連携して行動を起こす) / ギリシャ神話の大地の女神
+                    </p>
+                </div>
+                <div>
+                    <!-- ロゴ画像のパスを修正 -->
+                    <img src="GAIAロゴ最終決定案-removebg-preview (1).png" alt="GAIA ロゴ" class="rounded-xl w-full h-auto">
+                </div>
+            </div>
+        </section>
+
+        <!-- History セクション -->
+        <section id="history" class="mb-20 md:mb-32 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our History</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="relative border-l-2 border-emerald-300">
+                     <div class="mb-10 ml-6">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-emerald-200 rounded-full -left-3 ring-8 ring-white">
+                            <i data-lucide="calendar" class="w-4 h-4 text-emerald-700"></i>
+                        </span>
+                        <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">2005年 愛・地球博 (EXPO 2005 AICHI)</h3>
+                        <p class="text-sm font-normal text-gray-500">テーマ「自然の叡智」。環境問題や持続可能な社会について考える大きな機会となりました。</p>
+                    </div>
+                    <div class="mb-10 ml-6">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-emerald-200 rounded-full -left-3 ring-8 ring-white">
+                             <i data-lucide="calendar" class="w-4 h-4 text-emerald-700"></i>
+                        </span>
+                        <h3 class="mb-1 text-lg font-semibold text-gray-900">2010年 COP10 & 愛知目標採択</h3>
+                        <p class="text-sm font-normal text-gray-500">生物多様性の損失を止めるための世界目標「愛知目標」が名古屋で採択されました。</p>
+                    </div>
+                    <div class="mb-10 ml-6">
+                         <span class="absolute flex items-center justify-center w-6 h-6 bg-emerald-200 rounded-full -left-3 ring-8 ring-white">
+                             <i data-lucide="rocket" class="w-4 h-4 text-emerald-700"></i>
+                        </span>
+                        <h3 class="mb-1 text-lg font-semibold text-gray-900">2020年 GAIA結成</h3>
+                        <p class="text-sm font-normal text-gray-500">「生物多様性あいち学生プロジェクト」としてスタート。若者の力で保全活動を推進する挑戦が始まりました。</p>
+                    </div>
+                    <div class="ml-6">
+                         <span class="absolute flex items-center justify-center w-6 h-6 bg-emerald-200 rounded-full -left-3 ring-8 ring-white">
+                           <i data-lucide="party-popper" class="w-4 h-4 text-emerald-700"></i>
+                        </span>
+                        <h3 class="mb-1 text-lg font-semibold text-gray-900">2024年 そして現在へ</h3>
+                        <p class="text-sm font-normal text-gray-500">愛知県内9地域での連携活動や自主活動を通して、「守り、つなぎ、広める」を実践しています。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 活動報告セクション -->
+        <section id="activities" class="mb-20 md:mb-32 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">2024 Activities</h2>
+            <!-- 協議会との連携活動セクション -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-center mb-10 text-gray-700">愛知県内９地域の協議会との連携活動</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 活動写真のパスを修正 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="Q1.jpg" alt="知多半島の里山保全 活動写真" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1 leading-tight">1. 知多半島の里山保全</h4>
+                            <p class="text-sm text-gray-500 mb-2 font-medium">活動地域：知多半島</p>
+                            <p class="text-gray-700 italic">竹を切り、チップに再生！里山が蘇る瞬間を仲間と共に。</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="Q2.jpg" alt="佐久島のアマモ場再生活動 活動写真" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1 leading-tight">2. 佐久島のアマモ場再生活動</h4>
+                            <p class="text-sm text-gray-500 mb-2 font-medium">活動地域：西三河 佐久島</p>
+                            <p class="text-gray-700 italic">青い海に希望の"アマモ"を植える、"海のゆりかご"再生活動。</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="Q3.jpg" alt="新城・設楽の湧水湿地保全 活動写真" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1 leading-tight">3. 新城・設楽の湧水湿地保全</h4>
+                            <p class="text-sm text-gray-500 mb-2 font-medium">活動地域：新城・設楽</p>
+                            <p class="text-gray-700 italic">"日本の重要湿地500"で、希少な生態系を守る。</p>
+                        </div>
+                    </div>
+                     <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="Q4.jpg" alt="西三河の外来種アカミミガメ駆除 活動写真" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1 leading-tight">4. 西三河の外来種アカミミガメ駆除</h4>
+                            <p class="text-sm text-gray-500 mb-2 font-medium">活動地域：西三河</p>
+                            <p class="text-gray-700 italic">地域のビオトープを守るため、外来種アカミミガメを捕獲！</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="Q5.jpg" alt="東部丘陵での稲刈り体験 活動写真" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1 leading-tight">5. 東部丘陵での稲刈り体験</h4>
+                            <p class="text-sm text-gray-500 mb-2 font-medium">活動地域：東部丘陵</p>
+                            <p class="text-gray-700 italic">日本の原風景で、食と農を学ぶ</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="Q6.jpg" alt="東三河での生き物調査 活動写真" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1 leading-tight">6. 東三河での生き物調査</h4>
+                            <p class="text-sm text-gray-500 mb-2 font-medium">活動地域：東三河</p>
+                            <p class="text-gray-700 italic">コドラート調査に昆虫採集！子どもたちと生き物を探す一日。</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="Q7.jpg" alt="渥美半島の海岸清掃 活動写真" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1 leading-tight">7. 渥美半島の海岸清掃</h4>
+                            <p class="text-sm text-gray-500 mb-2 font-medium">活動地域：渥美半島</p>
+                            <p class="text-gray-700 italic">最高のロケーションで、地球にいいこと</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="Q8.jpg" alt="尾張北部の里山保全 活動写真" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1 leading-tight">8. 尾張北部の里山保全</h4>
+                            <p class="text-sm text-gray-500 mb-2 font-medium">活動地域：尾張北部</p>
+                            <p class="text-gray-700 italic">本格的な林業体験で、森と向き合う</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="Q9.jpg" alt="尾張西部のビオトープ整備 活動写真" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1 leading-tight">9. 尾張西部のビオトープ整備</h4>
+                            <p class="text-sm text-gray-500 mb-2 font-medium">活動地域：尾張西部</p>
+                            <p class="text-gray-700 italic">生き物の"すみか"をデザイン＆創造！</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 自主活動セクション -->
+            <div>
+                 <h3 class="text-2xl font-bold text-center mb-10 text-gray-700">GAIAの自主活動</h3>
+                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="J1.jpg" alt="SDGs AICHI EXPO 活動写真" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1 leading-tight">SDGs AICHI EXPO</h4>
+                            <p class="text-sm text-gray-500 mb-2 font-medium">活動地域：愛知県国際展示場</p>
+                            <p class="text-gray-700 italic">愛知の未来を考える大舞台で、GAIAの声を届けよう！</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="J2.jpg" alt="TABふれあいフェス 活動写真" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1 leading-tight">TABふれあいフェス</h4>
+                            <p class="text-sm text-gray-500 mb-2 font-medium">活動地域：豊田市</p>
+                            <p class="text-gray-700 italic">子どもから大人まで！生き物ふれあいブースで笑顔の輪を広げる。</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="J3.jpg" alt="岡崎自然体験の森 活動写真" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1 leading-tight">岡崎自然体験の森</h4>
+                            <p class="text-sm text-gray-500 mb-2 font-medium">活動地域：岡崎市</p>
+                            <p class="text-gray-700 italic">森の声を聞きながら保全活動。自然と一体になる特別な時間。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Join Us セクション -->
+        <section id="join" class="scroll-mt-20">
+            <div class="bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl shadow-xl text-white p-8 md:p-12 text-center">
+                 <h2 class="text-3xl font-bold mb-4">Join Us!</h2>
+                 <p class="max-w-3xl mx-auto leading-relaxed mb-8">
+                     私たちと一緒に、愛知の自然を守り、未来へつなぐ活動をしませんか？GAIAは、いつでも新しい仲間を歓迎しています。環境問題に興味がある、新しいことに挑戦したい、大学生活で何かを成し遂げたい。そんな君を待っています！
+                 </p>
+                 
+                 <!-- SNS QRコードセクション -->
+                 <div>
+                    <h3 class="font-semibold mb-6">SNSはこちらから</h3>
+                    <div class="flex flex-wrap justify-center items-start gap-x-6 gap-y-4">
+                        <!-- SNS QRコードのパスを修正 -->
+                        <div class="text-center w-28">
+                            <img src="instagram.jpg" alt="Instagram QR Code" class="rounded-lg mx-auto w-full h-auto">
+                            <p class="mt-2 text-sm font-semibold">Instagram</p>
+                        </div>
+                        <div class="text-center w-28">
+                           <img src="X.jpg" alt="X (Twitter) QR Code" class="rounded-lg mx-auto w-full h-auto">
+                           <p class="mt-2 text-sm font-semibold">X (Twitter)</p>
+                        </div>
+                        <div class="text-center w-28">
+                           <img src="facebook.jpg" alt="Facebook QR Code" class="rounded-lg mx-auto w-full h-auto">
+                           <p class="mt-2 text-sm font-semibold">Facebook</p>
+                        </div>
+                        <div class="text-center w-28">
+                           <img src="HP.jpg" alt="Website QR Code" class="rounded-lg mx-auto w-full h-auto">
+                           <p class="mt-2 text-sm font-semibold">Website</p>
+                        </div>
+                        <div class="text-center w-28">
+                           <img src="LINE.jpg" alt="LINE QR Code" class="rounded-lg mx-auto w-full h-auto">
+                           <p class="mt-2 text-sm font-semibold">LINE</p>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- フッター -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8 text-center text-gray-400 text-sm">
+            <p>&copy; 2024 GAIA - Aichi Biodiversity Student Project. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
+
