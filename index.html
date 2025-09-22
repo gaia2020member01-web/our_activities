@@ -266,14 +266,15 @@
 
     </div>
 
-    <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center p-4">        <div id="modal-content" class="bg-white rounded-lg shadow-xl relative max-w-md w-full">
-            <div id="modal-body" class="p-2">
-                </div>
-            <button id="modal-close-button" class="absolute -top-4 -right-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-200 transition-colors">
-                <i data-lucide="x" class="w-6 h-6 text-gray-800"></i>
-            </button>
-        </div>
+<div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center p-4">
+    <div id="modal-content" class="bg-white rounded-lg shadow-xl relative max-w-md w-full max-h-[80vh] flex flex-col">
+        <div id="modal-body" class="p-2 overflow-y-auto">
+            </div>
+        <button id="modal-close-button" class="absolute -top-4 -right-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-200 transition-colors">
+            <i data-lucide="x" class="w-6 h-6 text-gray-800"></i>
+        </button>
     </div>
+</div>
     <div class="hidden">
         <!--ここにインスタグラムの埋め込みコードが入っている。-->
         <div id="q1-embed">
