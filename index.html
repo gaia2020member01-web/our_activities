@@ -372,7 +372,7 @@
             });
         }
 
-        // --- 隠しモード（オートプレイ）機能 ---
+// --- 隠しモード（オートプレイ）機能 ---
         const header = document.querySelector('header');
         const autoplayConfirmModal = document.getElementById('autoplay-confirm-modal');
         const confirmYesBtn = document.getElementById('confirm-yes');
@@ -386,7 +386,6 @@
         let slideshowInterval = null;
         const postEmbedIds = [];
 
-        // ページ内のInstagram投稿IDをすべて取得
         document.querySelectorAll('.activity-card[data-embed-id]').forEach(card => {
             const embedId = card.dataset.embedId;
             const embedContainer = document.getElementById(embedId);
@@ -397,16 +396,10 @@
 
         let currentSlideIndex = 0;
 
-        // ヘッダーがクリックされた時の処理
         header.addEventListener('click', () => {
             clickCount++;
-            // クリック間隔が1.5秒以上空いたらリセット
             clearTimeout(clickTimer);
-            clickTimer = setTimeout(() => {
-                clickCount = 0;
-            }, 1500);
-
-            // 5回クリックされたら確認モーダルを表示
+            clickTimer = setTimeout(() => { clickCount = 0; }, 1500);
             if (clickCount === 5) {
                 clickCount = 0;
                 clearTimeout(clickTimer);
@@ -414,55 +407,70 @@
             }
         });
 
-        // 確認モーダル：「いいえ」の処理
         confirmNoBtn.addEventListener('click', () => {
             autoplayConfirmModal.classList.add('hidden');
         });
 
-        // 確認モーダル：「はい」の処理
         confirmYesBtn.addEventListener('click', () => {
             autoplayConfirmModal.classList.add('hidden');
             startSlideshow();
         });
 
-        // スライドショーの閉じるボタンの処理
         slideshowCloseBtn.addEventListener('click', () => {
             stopSlideshow();
         });
 
-        // 指定されたインデックスのスライドを表示する関数
-        function showSlide(index) {
+        // スライドの中身をセットする関数
+        function setSlideContent(index) {
             if (index >= postEmbedIds.length) return;
             const embedId = postEmbedIds[index];
             const embedContainer = document.getElementById(embedId);
             slideshowContent.innerHTML = embedContainer.innerHTML;
-            // Instagramの埋め込みを再描画
             if (window.instgrm) {
                 window.instgrm.Embeds.process();
             }
         }
 
-        // 次のスライドに進む関数
+        // 次のスライドへ（アニメーション制御）
         function nextSlide() {
-            currentSlideIndex = (currentSlideIndex + 1) % postEmbedIds.length;
-            showSlide(currentSlideIndex);
+            // 1. 現在のスライドをフェードアウト
+            slideshowContent.classList.add('opacity-0');
+
+            // 2. フェードアウト後（0.5秒後）に次のスライドの準備
+            setTimeout(() => {
+                // 3. インデックスを更新（%を使いループを実現）
+                currentSlideIndex = (currentSlideIndex + 1) % postEmbedIds.length;
+                setSlideContent(currentSlideIndex);
+
+                // 4. 新しいスライドをフェードイン
+                slideshowContent.classList.remove('opacity-0');
+            }, 500); // CSSのdurationと時間を合わせる
         }
 
-        // スライドショーを開始する関数
+        // スライドショーを開始
         function startSlideshow() {
             if (postEmbedIds.length === 0) return;
             currentSlideIndex = 0;
+
+            // 最初は透明な状態で準備
+            slideshowContent.classList.add('opacity-0');
             slideshowOverlay.classList.remove('hidden');
-            showSlide(currentSlideIndex);
+            setSlideContent(currentSlideIndex);
+
+            // 少し間を置いてからフェードイン開始
+            setTimeout(() => {
+                slideshowContent.classList.remove('opacity-0');
+            }, 100);
+
             // 8秒ごとにスライドを切り替え
-            slideshowInterval = setInterval(nextSlide, 8000); 
+            slideshowInterval = setInterval(nextSlide, 8000);
         }
 
-        // スライドショーを停止する関数
+        // スライドショーを停止
         function stopSlideshow() {
             slideshowOverlay.classList.add('hidden');
             clearInterval(slideshowInterval);
-            slideshowContent.innerHTML = ''; // 中身を空にする
+            slideshowContent.innerHTML = '';
         }
 
         // --- ポップアップ（モーダル）機能 ---
