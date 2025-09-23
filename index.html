@@ -339,7 +339,33 @@
             <p>&copy; 2024 GAIA - Aichi Biodiversity Student Project. All Rights Reserved.</p>
         </div>
     </footer>
+    
+<footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8 text-center text-gray-400 text-sm">
+            <p>&copy; 2024 GAIA - Aichi Biodiversity Student Project. All Rights Reserved.</p>
+        </div>
+    </footer>
 
+    <div id="autoplay-confirm-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center p-4">
+        <div class="bg-white rounded-lg shadow-xl p-8 text-center">
+            <p class="text-lg font-semibold mb-6">オートプレイモードに移行しますか？</p>
+            <div class="flex justify-center space-x-4">
+                <button id="confirm-yes" class="bg-emerald-500 text-white px-6 py-2 rounded-lg hover:bg-emerald-600 transition-colors">はい</button>
+                <button id="confirm-no" class="bg-gray-300 text-gray-800 px-6 py-2 rounded-lg hover:bg-gray-400 transition-colors">いいえ</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="slideshow-overlay" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex justify-center items-center p-4">
+        <button id="slideshow-close" class="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 z-10">&times;</button>
+        <div id="slideshow-content" class="w-full max-w-lg">
+            </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        // --- モバイルメニューの開閉機能 ---
     <script>
         lucide.createIcons();
         
@@ -357,6 +383,123 @@
         }
 
         // --- ポップアップ（モーダル）機能 ---
+
+<script>
+        lucide.createIcons();
+        
+        // --- モバイルメニューの開閉機能 ---
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+
+        // ↓↓↓ ここにJavaScriptコードを貼り付け ↓↓↓
+
+        // --- 隠しモード（オートプレイ）機能 ---
+        const header = document.querySelector('header');
+        const autoplayConfirmModal = document.getElementById('autoplay-confirm-modal');
+        const confirmYesBtn = document.getElementById('confirm-yes');
+        const confirmNoBtn = document.getElementById('confirm-no');
+        const slideshowOverlay = document.getElementById('slideshow-overlay');
+        const slideshowCloseBtn = document.getElementById('slideshow-close');
+        const slideshowContent = document.getElementById('slideshow-content');
+
+        let clickCount = 0;
+        let clickTimer = null;
+        let slideshowInterval = null;
+        const postEmbedIds = [];
+
+        // ページ内のInstagram投稿IDをすべて取得
+        document.querySelectorAll('.activity-card[data-embed-id]').forEach(card => {
+            const embedId = card.dataset.embedId;
+            const embedContainer = document.getElementById(embedId);
+            if (embedContainer && embedContainer.innerHTML.trim() !== '') {
+                postEmbedIds.push(embedId);
+            }
+        });
+
+        let currentSlideIndex = 0;
+
+        // ヘッダーがクリックされた時の処理
+        header.addEventListener('click', () => {
+            clickCount++;
+            // クリック間隔が1.5秒以上空いたらリセット
+            clearTimeout(clickTimer);
+            clickTimer = setTimeout(() => {
+                clickCount = 0;
+            }, 1500);
+
+            // 5回クリックされたら確認モーダルを表示
+            if (clickCount === 5) {
+                clickCount = 0;
+                clearTimeout(clickTimer);
+                autoplayConfirmModal.classList.remove('hidden');
+            }
+        });
+
+        // 確認モーダル：「いいえ」の処理
+        confirmNoBtn.addEventListener('click', () => {
+            autoplayConfirmModal.classList.add('hidden');
+        });
+
+        // 確認モーダル：「はい」の処理
+        confirmYesBtn.addEventListener('click', () => {
+            autoplayConfirmModal.classList.add('hidden');
+            startSlideshow();
+        });
+
+        // スライドショーの閉じるボタンの処理
+        slideshowCloseBtn.addEventListener('click', () => {
+            stopSlideshow();
+        });
+
+        // 指定されたインデックスのスライドを表示する関数
+        function showSlide(index) {
+            if (index >= postEmbedIds.length) return;
+            const embedId = postEmbedIds[index];
+            const embedContainer = document.getElementById(embedId);
+            slideshowContent.innerHTML = embedContainer.innerHTML;
+            // Instagramの埋め込みを再描画
+            if (window.instgrm) {
+                window.instgrm.Embeds.process();
+            }
+        }
+
+        // 次のスライドに進む関数
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % postEmbedIds.length;
+            showSlide(currentSlideIndex);
+        }
+
+        // スライドショーを開始する関数
+        function startSlideshow() {
+            if (postEmbedIds.length === 0) return;
+            currentSlideIndex = 0;
+            slideshowOverlay.classList.remove('hidden');
+            showSlide(currentSlideIndex);
+            // 8秒ごとにスライドを切り替え
+            slideshowInterval = setInterval(nextSlide, 8000); 
+        }
+
+        // スライドショーを停止する関数
+        function stopSlideshow() {
+            slideshowOverlay.classList.add('hidden');
+            clearInterval(slideshowInterval);
+            slideshowContent.innerHTML = ''; // 中身を空にする
+        }
+
+        // ↑↑↑ ここまでを貼り付け ↑↑↑
+
+
+        // --- ポップアップ（モーダル）機能 ---
+       
         const modal = document.getElementById('modal');
         const modalBody = document.getElementById('modal-body');
         const closeModalButton = document.getElementById('modal-close-button');
