@@ -334,7 +334,7 @@
         <div id="j3-embed"></div>
         </div>
 
-    <footer class="bg-gray-800 text-white mt-16">
+ <footer class="bg-gray-800 text-white mt-16">
         <div class="container mx-auto px-4 py-8 text-center text-gray-400 text-sm">
             <p>&copy; 2024 GAIA - Aichi Biodiversity Student Project. All Rights Reserved.</p>
         </div>
@@ -349,15 +349,14 @@
             </div>
         </div>
     </div>
-
     <div id="slideshow-overlay" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex justify-center items-center p-4">
         <button id="slideshow-close" class="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 z-10">&times;</button>
-        <div id="slideshow-content" class="w-full max-w-lg">
-            </div>
+        <div id="slideshow-content" class="w-full max-w-lg transition-opacity duration-500 ease-in-out">
+        </div>
     </div>
 
     <script>
-lucide.createIcons();
+        lucide.createIcons();
         
         // --- モバイルメニューの開閉機能 ---
         const menuButton = document.getElementById('mobile-menu-button');
@@ -420,13 +419,11 @@ lucide.createIcons();
             stopSlideshow();
         });
 
-        // スライドの中身をセットする関数
         function setSlideContent(index) {
             if (index >= postEmbedIds.length) return;
             const embedId = postEmbedIds[index];
             const embedContainer = document.getElementById(embedId);
             slideshowContent.innerHTML = embedContainer.innerHTML;
-            // エラーが発生してもスライドショーが止まらないように修正
             try {
                 if (window.instgrm && window.instgrm.Embeds) {
                     window.instgrm.Embeds.process();
@@ -436,7 +433,6 @@ lucide.createIcons();
             }
         }
 
-        // 次のスライドへ（アニメーション制御）
         function nextSlide() {
             slideshowContent.classList.add('opacity-0');
             setTimeout(() => {
@@ -446,7 +442,6 @@ lucide.createIcons();
             }, 500);
         }
 
-        // スライドショーを開始
         function startSlideshow() {
             if (postEmbedIds.length === 0) return;
             currentSlideIndex = 0;
@@ -459,7 +454,6 @@ lucide.createIcons();
             slideshowInterval = setInterval(nextSlide, 8000);
         }
 
-        // スライドショーを停止
         function stopSlideshow() {
             slideshowOverlay.classList.add('hidden');
             clearInterval(slideshowInterval);
@@ -479,7 +473,6 @@ lucide.createIcons();
                 if (embedContainer && embedContainer.innerHTML.trim() !== '') {
                     modalBody.innerHTML = embedContainer.innerHTML;
                     modal.classList.remove('hidden');
-                    // エラーが発生してもモーダル表示が止まらないように修正
                     try {
                         if (window.instgrm && window.instgrm.Embeds) {
                             window.instgrm.Embeds.process();
@@ -502,3 +495,8 @@ lucide.createIcons();
                 closeModal();
             }
         });
+    </script>
+    <script async src="//www.instagram.com/embed.js"></script>
+</body>
+</html>
+   
