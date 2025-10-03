@@ -357,7 +357,7 @@
     </div>
 
     <script>
-        lucide.createIcons();
+lucide.createIcons();
         
         // --- モバイルメニューの開閉機能 ---
         const menuButton = document.getElementById('mobile-menu-button');
@@ -372,7 +372,7 @@
             });
         }
 
-// --- 隠しモード（オートプレイ）機能 ---
+        // --- 隠しモード（オートプレイ）機能 ---
         const header = document.querySelector('header');
         const autoplayConfirmModal = document.getElementById('autoplay-confirm-modal');
         const confirmYesBtn = document.getElementById('confirm-yes');
@@ -426,43 +426,36 @@
             const embedId = postEmbedIds[index];
             const embedContainer = document.getElementById(embedId);
             slideshowContent.innerHTML = embedContainer.innerHTML;
-            if (window.instgrm) {
-                window.instgrm.Embeds.process();
+            // エラーが発生してもスライドショーが止まらないように修正
+            try {
+                if (window.instgrm && window.instgrm.Embeds) {
+                    window.instgrm.Embeds.process();
+                }
+            } catch (e) {
+                console.error("Instagramの投稿処理でエラーが発生しました:", e);
             }
         }
 
         // 次のスライドへ（アニメーション制御）
         function nextSlide() {
-            // 1. 現在のスライドをフェードアウト
             slideshowContent.classList.add('opacity-0');
-
-            // 2. フェードアウト後（0.5秒後）に次のスライドの準備
             setTimeout(() => {
-                // 3. インデックスを更新（%を使いループを実現）
                 currentSlideIndex = (currentSlideIndex + 1) % postEmbedIds.length;
                 setSlideContent(currentSlideIndex);
-
-                // 4. 新しいスライドをフェードイン
                 slideshowContent.classList.remove('opacity-0');
-            }, 500); // CSSのdurationと時間を合わせる
+            }, 500);
         }
 
         // スライドショーを開始
         function startSlideshow() {
             if (postEmbedIds.length === 0) return;
             currentSlideIndex = 0;
-
-            // 最初は透明な状態で準備
             slideshowContent.classList.add('opacity-0');
             slideshowOverlay.classList.remove('hidden');
             setSlideContent(currentSlideIndex);
-
-            // 少し間を置いてからフェードイン開始
             setTimeout(() => {
                 slideshowContent.classList.remove('opacity-0');
             }, 100);
-
-            // 8秒ごとにスライドを切り替え
             slideshowInterval = setInterval(nextSlide, 8000);
         }
 
@@ -483,14 +476,16 @@
             card.addEventListener('click', () => {
                 const embedId = card.dataset.embedId;
                 const embedContainer = document.getElementById(embedId);
-
-                // 埋め込みコードが空でなければモーダルを表示
                 if (embedContainer && embedContainer.innerHTML.trim() !== '') {
                     modalBody.innerHTML = embedContainer.innerHTML;
                     modal.classList.remove('hidden');
-
-                    if (window.instgrm) {
-                        window.instgrm.Embeds.process();
+                    // エラーが発生してもモーダル表示が止まらないように修正
+                    try {
+                        if (window.instgrm && window.instgrm.Embeds) {
+                            window.instgrm.Embeds.process();
+                        }
+                    } catch (e) {
+                        console.error("Instagramの投稿処理でエラーが発生しました:", e);
                     }
                 }
             });
@@ -498,7 +493,7 @@
 
         const closeModal = () => {
             modal.classList.add('hidden');
-            modalBody.innerHTML = ''; // 中身を安全のために空にする
+            modalBody.innerHTML = '';
         };
 
         closeModalButton.addEventListener('click', closeModal);
@@ -507,7 +502,3 @@
                 closeModal();
             }
         });
-    </script>
-    <script async src="//www.instagram.com/embed.js"></script>
-    </body>
-</html>
